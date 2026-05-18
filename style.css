@@ -13,7 +13,6 @@ body{
     width:100%;
     background-color:whitesmoke;
     margin:auto;
-    height:100vh;
 }
 header{
       background-color: white;
@@ -83,7 +82,8 @@ button:hover{
 }
 
 .container2 .image{
-    background: linear-gradient(135deg, #d8d6f8 0%, #c9c5f5 100%);
+    background-image:url("images.jpeg");
+            background-size: cover;
             border-radius: 20px;
             height: 400px;
             display: flex;
@@ -92,6 +92,138 @@ button:hover{
             color: #999;
             font-size: 14px;
             position: relative;
+}
+.container3{
+       background-color: #f8f9fa;
+}
+.container3 .section-title{
+         text-align: center;
+            margin-bottom: 50px;
+}
+.container3-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+    padding:0px 150px;
+}
+.container3-grid .grid-1{
+   background-color:white;
+   border-radius:20px;
+   padding:10px 20px;
+}
+.container3-grid .grid-1 .icon{
+    height:40px;
+    width:40px;
+    border-radius:10px;
+    background-color: #f8f9fa; 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.grid-1 p{
+    font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+}
+.testimonials .section-title{
+         text-align: center;
+            margin-bottom: 50px;
+}
+.testimonials{
+      background-color: #f8f9fa;
+}
+.testimonials .testimonials-grid{
+      display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+    padding:0px 150px;
+}
+.testimonials-grid .grid-1{
+     background-color:white;
+   border-radius:20px;
+   padding:10px 20px;
+   position: relative;
+}
+.testimonials-grid .grid-1 .quote{
+       height:40px;
+    width:40px;
+    border-radius:10px;
+    background-color: #f8f9fa; 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:3em;
+}
+.testimonials-grid .grid-1 .image{
+    height:30px;
+    width:30px;
+    object-fit:cover;
+    background-image:url("person2.jpg");
+    background-size:cover;
+    border-radius:20px;
+}
+.testimonials-grid .grid-1 .image1{
+    height:30px;
+    width:30px;
+    object-fit:cover;
+    background-image:url("person1.jpg");
+    background-size:cover;
+    border-radius:20px;
+}
+.testimonials-grid .grid-1 .image2{
+    height:30px;
+    width:30px;
+    object-fit:cover;
+    background-image:url("person3.jpg");
+    background-size:cover;
+    border-radius:20px;
+}
+.testimonials-grid .grid-1 .name{
+    position:absolute;
+    bottom:-30px;
+    left:60px;
+}
+.pricing{
+    background-color:#f6f9fa; ;
+}
+.pricing .section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+.pricing-grid{
+     display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+    padding:0px 150px;
+}
+.pricing-grid .grid-1{
+     background-color:white;
+   border-radius:20px;
+   padding:10px 20px;
+   position: relative;
+}
+.pricing-grid .pricing-period{
+      font-size: 14px;
+            margin-bottom: 25px;
+            opacity: 0.8;
+}
+.pricing-price{
+      font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+}
+.pricing-grid .grid-1 .button1{
+   width: 100%;
+            padding: 12px;
+            border: 1px solid #5e5ce6;
+            background-color:white;
+            color: #5e5ce6;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 20px;
 }
 @media(max-width:56em){
     header{
@@ -102,5 +234,11 @@ button:hover{
     }
     .container2{
         grid-template-columns:1fr;
+    }
+    .container3-grid{
+        grid-template-columns:1fr;
+    }
+    .testimonials .testimonials-grid{
+         grid-template-columns:1fr;
     }
 }
