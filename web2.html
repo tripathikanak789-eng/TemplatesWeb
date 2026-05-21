@@ -22,6 +22,84 @@
              <button class="start">Start with this Kit <i class="fa-solid fa-arrow-down"></i></button>
             </div>
         </header>
+        <nav>
+            <div class="nav1">
+                <a href="#About">About</a>
+                <a href="#theCompany">TheCompany</a>
+                <a href="#Collaboration">Collaboration</a>
+            </div>
+            <div class="nav2">
+                <div class="name">Lena Karleen</div>
+            </div>
+            <div class="start2">
+                <button class="start2">Apply for funding</button>
+                </div>
+        </nav>
+        <nav class="nav3">
+             <div class="name">Lena Karleen</div>
+            <div class="icon2">
+                <i id="icon2" onclick="menu()"  class="fa-solid fa-bars"></i>
+                <i id="icon3"  onclick="menuUp()"class="fa-regular fa-circle-xmark"></i>
+                <div>
+                    <div class="nav4">
+                          <a href="#About">About</a>
+                <a href="#theCompany">TheCompany</a>
+                <a href="#Collaboration">Collaboration</a>
+                    </div>
+        </nav>
+        <section class="main">
+            <div class="section1">
+                <div class="box">
+                    <div class="image">
+                    </div>
+                    <p>Schedule a free consultation with our team and let's make things happen!</p>
+                    <button class="find">Find Out How</button>
+                </div>
+                <div class="box">
+                  <div class="image2">
+                     <div class="text">
+                    <h1>INVESTING IN BOLD IDEAS</h1>
+                    <h1>THAT BUILD THE FUTURE</h1>
+                    <p>Fueling Innovation. Funding Dreams.Forging the Future</p>
+                  </div>
+                  </div>
+                </div>
+                <div class="box">
+                    <div class="image3">
+                    </div>
+                    <p>Schedule a free consultation with our team and let's make things happen!</p>
+                    <button class="find">Become A Partner</button>
+                </div>
+            </div>
+        </section>
+        <section class="section2">
+            <div class="image4">
+                <div class="image5"></div>
+            </div>
+            <div class="About">
+                <h1>About Lena Karleen</h1>
+                <p>Lena Karleen isn’t just an investor, she’s here to help you change the game. As a visionary entrepreneur and venture capitalist, she backs brilliant minds like yours with groundbreaking ideas and  environmentally impactful projects. She’s committed to diversity, inclusion and innovation, making sure that the best ideas (not just the loudest voices) shape the future of technology.</p>
+                <p>Her mission? To empower your vision, help you disrupt industries, and build a future where innovation knows no limits.</p>
+            </div>
+        </section>
+        <section class="section3">
+         
+        </section>
     </div>
+    <script>
+        let x=document.querySelector("#icon2");
+        let y=document.querySelector(".nav4");
+         let z=document.querySelector("#icon3");
+        function menu(){
+            y.style.display="flex";
+            x.style.display="none"   
+            z.style.display="flex";  
+        }
+        function menuUp(){
+            z.style.display="none";
+            y.style.display="none";
+            x.style.display="flex";
+        }
+    </script>
 </body>
 </html>
