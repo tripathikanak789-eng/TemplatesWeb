@@ -22,11 +22,11 @@ header{
     grid-template-columns: 1fr 1fr;
     height:70px;
     background-color: black;
-    color:white
+    color:white;
 }
 .logo,.logo2{
     position:relative;
-    margin-left:0px;
+    margin-left:10px;
     height:70px;
     display:flex;
     align-items:center;
@@ -104,11 +104,14 @@ nav div{
     transition:0.5s;
 }
 .name{
+    display:none;
     color:white;
     text-transform:uppercase;
     letter-spacing:0em;
     font-weight: lighter;
     font-size:25px;
+    position:absolute;
+    left:100px;
 }
 .start2 button,.find{
     height:40px;
@@ -126,7 +129,7 @@ nav div{
 .icon2{
     color:white;
     position:absolute;
-    right:-10px;
+    right:-70px;
     top:5px;
 }
 #icon3{
@@ -286,9 +289,11 @@ p{
     color:#FFEDD4;
     justify-content: center;
 }
+
 .title2, .title3{
     margin-top:-200px;
 }
+
 #i{
     height:50px;
     width:50px;
@@ -659,5 +664,8 @@ footer{
         right:20px;
         border-radius:50%;
         color:white;
+    }
+     h1 i{
+        transform: rotate(-120deg);
     }
 }
