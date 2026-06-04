@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS variables</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        :root{
+            --base:yellow;
+            --spacing:10px;
+            --blur:10px;
+        }
+        body{
+            text-align: center;
+            background-color:black;
+        }
+        h1{
+            color:white;
+            font-size:3rem;
+            color:var(--base);
+        }
+        label{
+            color:white;
+            font-size: 2.5rem;
+            margin:10px
+        }
+        img{
+            height:400px;
+            width:400px;
+            margin:100px;
+            padding:var(--spacing);
+            background:var(--base);
+            filter:blur(var(--blur));
+        }
+    </style>
+</head>
+<body>
+    <h1>JS</h1>
+    <div class="panel">
+        <label for="spacing">spacing</label>
+        <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+        <label for="blur">Blur</label>
+        <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+        <label for="color">Color</label>
+        <input type="color" name="base"></div>
+    </div>
+    <img src="Images/build.jpg">
+</body>
+<script>
+    const input=document.querySelectorAll(".panel input");
+    function handleevnet(){
+    const suffix=this.dataset.sizing||"";
+    console.log(this.name);
+    document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix);
+    }
+    input.forEach(input=>input.addEventListener('change',handleevnet));
+    input.forEach(input=>input.addEventListener('mousemove',handleevnet));
+</script>
+</html>
