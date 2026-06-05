@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+    <script>
+        const inventors=[
+            {first:'Albert',last:'Einstein', year:1679,passed:1955},
+            {first:'Issac',last:'Newton',year:1643,passed:1727},
+            {first:'Galileo',last:'galilie',year:1564,passed:1727},
+            {first:'Marie',last:'Curie',year:1867,passed:1934}
+        ]
+        const people=['Beck,Glenn','Beckar,Carl','Beckett,Mick']
+        //filter the list of inventors who were born in 1500
+        const i=inventors.filter(function(x){
+            if(x.year>=1500 && x.year<=1600){
+                return true;
+            }
+        })
+        console.log(i);
+        //give an array of the inventory first and last names
+        const name=inventors.map(y=>y.first +" "+ y.last);
+        console.log(name);
+        //sort the inventors by birthdate ,oldest to youngest
+        // const birth=inventors.sort(function(a,b){
+        //     if(a.year>b.year){
+        //         return 1;
+        //     }else{
+        //         return -1;
+        //     }
+        // })
+        const birth=inventors.sort((a,b)=>(a.year>b.year?1:-1));
+        console.table(birth);
+        //how many years did all the inventors live
+        const live=inventors.reduce(function(total,inventor){
+            return total + (inventor.passed-inventor.year);
+        },0)
+        console.log(live);
+        //sort the inventors by years lived
+        const oldest=inventors.sort(function(a,b){
+            let lastguy=a.passed-a.years;
+            let nextguy=b.passed-b.years;
+            if(lastguy>nextguy){
+                return -1;
+            }else{
+                return 1;
+            }
+        })
+        console.log(oldest);
+        //sorting the people alphbeticaly by lastname
+        const x= people.sort(function(lastone,nextone){
+            let [alast,anext]=lastone.split(',');
+            let [blast,bnext]=nextone.split(',');
+            return alast>blast?1:-1;
+        });
+         console.log(x);
+         //reduce sum of the instances
+         const data=['car','car','truck','truck','bike','walk'];
+         const z=data.reduce(function(object,item){
+            if(!object[item]){
+                object[item]=0;
+            }
+            object[item]++;
+            return object;
+         },{});
+         console.log(z);
+    </script>
+</body>
+</html>
