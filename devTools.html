@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+       <p onclick="green()">Click Me</p>
+    <script>
+        let dogs=[{
+            name:'snickers',
+            age:18
+        },
+           { name:"labro",
+           age:12
+          }
+        ]
+        function green(){
+            let p=document.querySelector("p");
+            p.style.color="green";
+            p.style.fontSize="40px";
+        }
+        //regular
+        console.log("helloo")
+        //intorpolation
+        // var x= "sara";
+        // console.log(`hello ${x}`);
+        // console.log("%c I am some text",'font-size:40px; background:red; text-shadow:0 0 10px white;')
+        //error
+        console.error("oh no");
+        //warn
+        console.warn("shit");
+        //info
+        console.info("text");
+        //testing
+         let p=document.querySelector("p");
+        console.assert(p.classList.contains("o"),"this is wrong");
+         //viewing dom elements
+         console.log(p);
+         console.dir(p)
+         //group
+         dogs.forEach((dog)=>{
+             console.group(`${dog.name}`);
+            console.log(`this is ${dog.name}`);
+            console.log(`${dog.name} is ${dog.age} years old`);
+             console.groupEnd(`${dog.name}`);
+         })
+         //counting
+        console.count("wer");
+         console.count("wer");
+          console.count("wer");
+           console.count("wer");
+        //    //timing
+           console.time("fetching")
+           fetch("world-cities.json").then(res=>res.json()).then(data=>{
+            console.timeEnd("fetching");
+            console.log(data);
+          } )
+          console.table(dogs);
+    </script>
+</body>
+</html>
