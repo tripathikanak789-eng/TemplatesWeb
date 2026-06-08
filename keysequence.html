@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+    <script>
+        let pressed=[];
+        let code="kanak";
+        window.addEventListener("keyup",(e)=>{
+            console.log(e.key);
+            pressed.push(e.key);
+             console.log(pressed);
+             pressed.splice(-code.length-1,pressed.length-code.length);
+             if(pressed.join('').includes('kanak')){
+                console.log("success");
+                cornify_add();
+             }
+        })
+    </script>
+</body>
+</html>
