@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+</head>
+<style>
+    body{
+        background:linear-gradient(to bottom,rgba(0,0,255,0.5),rgba(0,255,0,0.5));
+        font-family:'Helvetica',sans-serif;
+    }
+    .container{
+        max-width:1280px;
+        width:90%;
+        margin:auto;
+        height:100vh;
+          display:flex;
+        align-items: center;
+        justify-content:center;
+    }
+     .wrapper{
+        width:250px;
+        height:auto;
+        background-color: azure;
+        box-shadow:0 0 10px rgba(0,0,0,0.5);
+     }
+     h2{
+        text-align: center;
+        text-transform:uppercase;
+     }
+    ul{
+        list-style:none;
+        padding-left:15px;
+        padding-right:15px;
+    }
+    .b{
+         border-radius: 0%;
+        border:none;
+        box-shadow:0 0 3px black;
+        margin-left:2px;
+        width:140px;
+        margin-left:15px;
+        margin-bottom:15px;
+    }
+    .a{
+        border-radius: 0%;
+        border:none;
+         box-shadow:0 0 3px black;
+    }
+</style>
+<body>
+    <div class="container">
+    <div class="wrapper">
+        <h2>Local Tapes</h2>
+        <p></p>
+        <ul class="plates">
+            <li>Loading tapes...</li>
+             <hr size="0.5" color="grey"> 
+        </ul>
+        <form class="add-items">
+           <input type="text" class="b" placeholder="item-value" name="item">
+           <input type="submit" class="a" value="add-item">
+        </form>
+    </div>
+    </div>
+    <script>
+    let addItems=document.querySelector(".add-items");
+    let itemList=document.querySelector(".plates");
+    let item=JSON.parse(localStorage.getItem('item'))||[];
+    function addItem(e){
+      e.preventDefault();
+      let text=(this.querySelector('[name=item]')).value;
+        let obj={
+            text,
+            done:false
+        }
+         item.push(obj);
+         console.log(item);
+         populateplate(item,itemList);
+         localStorage.setItem("item",JSON.stringify(item));
+        this.reset();
+    }
+    function populateplate(plates=[],platelist){
+    platelist.innerHTML=plates.map((plate,i)=>{
+        return `
+        <li>
+            <input type="checkbox" data-index=${i} id="item${i}" ${plate.done}?"checked":" "/>
+            <label for="item${i}">${plate.text}</label>
+               <hr size="0.5" color="grey"> 
+            </li>`
+    }).join('');
+    }
+    function togglebtn(e){
+     if(!e.target.matches("input"))return;
+     let e1=e.target;
+     const index=e1.dataset.index;
+     console.log(index);
+     item[index].done=!item[index].done;
+     
+    }
+    addItems.addEventListener("submit",addItem);
+    itemList.addEventListener("click",togglebtn);
+    populateplate(item,itemList);
+    </script>
+</body>
+</html>
