@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:linear-gradient(to bottom,rgba(0,0,255,0.5),rgba(0,255,0,0.5));
+    }
+    ul li{
+        height:auto;
+        width:300px;
+        background-color: azure;
+        box-shadow:0 0 10px black;
+        padding:10px;
+        text-align:justify;
+        list-style:none;
+        margin:0px;
+    }
+</style>
+<body>
+   <ul class="bands">
+    <li>bands</li>
+   </ul> 
+    <script>
+        const bands=['the plot in you','the devil wears prada','pierce the veil','Norma Jean','the bled','Say Anything','the midway state','we came as romans','counterparts','an old dog'];
+        function strip(bandNames){
+            return bandNames.replace(/^(a|the |an )/i,'').trim();
+        }
+        const sorted=bands.sort(function(a,b){
+            if(strip(a)>strip(b)){
+                return 1;
+            }else{
+                return -1;
+            }
+        })
+        document.querySelector(".bands").innerHTML=
+            sorted.map((band)=>{
+                return `<li>
+                       ${band}
+                    </li>`}
+        )
+        console.log(sorted)
+    </script>
+</body>
+</html>
