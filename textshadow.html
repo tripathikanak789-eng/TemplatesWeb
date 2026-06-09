@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            max-width:1280px;
+            width:90%;
+            height:100vh;
+            background-color:white;
+            margin:auto;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        h1{
+            font-size:4rem;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+          <h1>&#128293 WOAH</h1>
+    </div>
+    <script>
+        let hero=document.querySelector(".container");
+        let text=document.querySelector("h1");
+        let walk=100;
+        function shadow(e){
+            let width=hero.offsetWidth;
+            let height=hero.offsetHeight;
+            console.log(width);
+            let x=e.offsetX;
+            let y=e.offsetY;
+            console.log(x,y)
+            if(this!==e.target){
+                x=x+e.target.offsetWidth;
+                y=y+e.target.offsetHeight;
+            }
+            const xwalk=Math.round((x/width*walk)-walk/2);
+            const ywalk=Math.round((x/height*walk)-walk/2);
+            text.style.textShadow=`${xwalk}px ${ywalk}px 0 rgba(0,255,0,0.7),
+                                   ${xwalk*-1}px ${ywalk}px 0 rgba(0,255,255,0.7),
+                                   ${ywalk}px ${xwalk*-1}px 0 rgba(255,255,0,0.7),
+                                   ${ywalk*-2}px ${xwalk}px 0 rgba(0,0,255,0.7)`;
+        }
+        text.addEventListener("mousemove",shadow);
+    </script>
+</body>
+</html>
