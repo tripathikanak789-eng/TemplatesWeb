@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            max-width:1280px;
+            width:100%;
+            height:100vh;
+            margin:auto;
+            background:linear-gradient(to bottom,rgba(255,0,0,0.5),rgba(0,255,0,0.5));
+        }
+        nav{
+            margin-top:50px;
+            margin-left:-50px;
+        }
+        nav ul{
+            display:flex;
+            flex-direction:row;
+            gap:10px;
+            align-items: center;
+            justify-content:center;
+            list-style:none;
+        }
+        a{
+            text-decoration:none;
+            color:black;
+            font-weight: bold;
+        }
+        .wrapper{
+            text-align:justify;
+            margin:150px;
+            margin-top:20px;
+        }
+        .highlight{
+            transition:all 0.2s;
+            border-radius:20px;
+            background:white;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:-1;
+            display:block;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+        <li><a href="">Home</a></li>
+         <li><a href="">Ordered status</a></li>
+          <li><a href="">Tweets</a></li>
+           <li><a href="">Read our history</a></li>
+            <li><a href="">Contact us</a></li>
+            </ul>
+    </nav>
+    <div class="wrapper">
+        <p>Lorem Ipsum is simply dummy<a>concurrent</a> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library, took a 1914 Cicero translation and scrambled it to make dummy text for <a>Letraset's </a>Body Type sheets.It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software including versions</p>
+        <p>Contrary to popular belief, <a>Lorem Ipsum </a>is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,</p>
+    </div>
+    <script>
+        let trigger=document.querySelectorAll("a");
+        let highlight=document.createElement("span");
+        highlight.classList.add("highlight");
+        document.body.append(highlight);
+        function handlelink(){
+            let coords=this.getBoundingClientRect();
+            let coord={
+                width:coords.width,
+                height:coords.height,
+                top:coords.top+window.scrollY,
+                left:coords.left+window.scrollX
+            }
+            highlight.style.width=`${coord.width}px`;
+            highlight.style.height=`${coord.height}px`;
+            highlight.style.transform=`translate(${coord.left}px,${coord.top}px)`;
+        }
+        trigger.forEach(a=>a.addEventListener('mouseenter',handlelink));
+    </script>
+</body>
+</html>
