@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Capture</title>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        div{
+            width:100%;
+            padding:100px;
+        }
+        .one{
+            background-color: blanchedalmond;
+        }
+        .two{
+            background-color: aqua;
+        }
+        .three{
+            background-color: blue;
+        }
+        .red{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div class="one">
+        <div class="two">
+            <div class="three"></div>
+        </div>
+    </div>
+    <script>
+        let x=document.querySelectorAll("div");
+        function logtext(e){
+            console.log(this);
+            e.stopPropagation();
+            this.classList.toggle("red");
+        }
+        x.forEach(div=>div.addEventListener('click',logtext,{
+            capture:false
+        }));
+    </script>
+</body>
+</html>
