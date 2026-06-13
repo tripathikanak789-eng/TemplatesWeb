@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      <style>
+         .button:hover{
+            animation:hover 0.5s infinite;
+         }
+        @keyframes hover {
+            0%{
+                filter:hue-rotate(0deg);
+            }
+            100%{
+                filter:hue-rotate(360deg);
+                
+            }
+        }
+      </style>
+</head>
+<body>
+    <div class="max-w-[1280px] w-full h-screen m-auto bg-gray-800 flex items-center justify-center">
+        <div class="button border-2 h-10 w-30 border-white rounded-lg bg-black text-white flex items-center justify-center relative hover:z-0 hover:text-white">Hover me
+            <div class="absolute -top-0 -left-0 z-10 h-10 w-30 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition ease-in-out duration-300 blur-md opacity-0 hover:opacity-100 hover:z-0"></div>
+        </div>
+
+    </div>
+</body>
+</html>
