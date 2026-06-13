@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>videoSpeed</title>
+    <style>
+        .wrapper{
+            max-width:1280px;
+            width:100%;
+            height:100vh;
+            margin:auto;
+            background:linear-gradient(to bottom,rgba(255,0,0,0.5),rgba(0,0,255,0.5));
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            gap:20px;
+
+        }
+        .speed{
+            height:300px;
+            width:50px;
+            position:relative;
+            box-shadow:0 0 10px black;
+            border-radius:20px;
+            text-align: center;
+             overflow:hidden;
+        }
+        .speed-bar{
+            position:absolute;
+            background-color:white;
+            height:200px;
+            width:50px;
+            bottom:0;
+            left:0;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <video style="width:500px; height:600px;" src="video/video1.mp4" controls></video>
+    <div class="speed">
+        <div class="speed-bar">1x</div>
+    </div>
+    </div>
+<script>
+    const speed=document.querySelector(".speed");
+    const bar=speed.querySelector(".speed-bar");
+    const video=document.querySelector("video");
+    speed.addEventListener('mousemove',function(e){
+     let y=e.pageY-this.offsetTop;
+     console.log(y);
+     let percent=y/this.offsetHeight;
+     let min=0.4;
+     let max=4;
+     let height=Math.round(percent*100)+'%';
+     let playRate=percent*(max-min)+min;
+     bar.textContent=playRate.toFixed(2)+'x';
+     bar.style.height=height;
+     video.playbackRate=playRate;
+    })
+</script>
+</body>
+</html>
