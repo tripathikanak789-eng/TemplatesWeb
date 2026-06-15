@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .container{
+            max-width:1280px;
+            width:90%;
+            height:100vh;
+            margin:auto;
+            background-color:blueviolet;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+        }
+        .item{
+            height:50px;
+            width:200px;
+            background-color:white;
+            box-shadow: 0 0 10px black;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap:20px;
+            padding-left:10px;
+        }
+        input:checked::before{
+            content:"";
+        }
+        .line{
+            text-decoration: line-through;
+        }
+        .underline{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+            <input onclick="underline()"  type="checkbox">
+            <p>This is an inbox layout</p>
+        </div>
+        <div class="item">
+            <input onclick="underline()" type="checkbox">
+            <p>Check one item</p>
+        </div>
+         <div class="item">
+            <input onclick="underline()" type="checkbox">
+            <p>Hold down your shift key</p>
+        </div>
+         <div   class="item">
+            <input onclick="underline()" type="checkbox">
+            <p>Check a lower item</p>
+        </div>
+         <div class="item">
+            <input  onclick="underline()"  type="checkbox">
+            <p>Everything iinbetween should also be set to checked</p>
+        </div>
+    </div>
+    <script>
+        let p=document.querySelectorAll("p");
+        let input=document.querySelectorAll('input');
+        let x=Array.from(p);
+        console.log(x);
+        let checkBoxs=document.querySelectorAll("input");
+        let lastchecked;
+        let inBetween=false;
+        function handlecheck(e){ 
+            if(e.shiftKey && this.checked){
+             checkBoxs.forEach(checkBox=>{
+                console.log(checkBox)
+                if(checkBox===this || checkBox===lastchecked){
+                    inBetween=!inBetween;
+                    console.log("hi");
+                }
+                if(inBetween){
+                    checkBox.checked=true;
+                }
+             });
+
+            }
+            lastchecked=this;
+        }
+        checkBoxs.forEach(check=>{
+            check.addEventListener('click',handlecheck);
+        });
+        function line(e){
+            console.log(this);
+            e.stopPropagation();
+            this.classList.toggle("underline");
+        }
+          p.forEach(p=>{
+            p.addEventListener("click",line,{
+                capture:false
+            })
+          })
+    </script>
+</body>
+</html>
