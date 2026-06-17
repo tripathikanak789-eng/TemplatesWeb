@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
+<body>
+    <div class="bg-gray-900 max-w-[1280px] h-screen w-full m-auto" >
+     <div class="w-full h-30 relative bg-transparent">
+        <div class="h-30 w-20 bg-transparent mx-10 my-0 flex items-center justify-center">
+       <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="absolute h-8 w-auto top-10 left-10"/>
+         <div class="flex text-white gap-10 absolute left-110 hidden lg:flex lg:gap-x-12">
+        <li class="list-none font-bold"><a href="#">Product</a></li>
+        <li class="list-none font-bold"><a href="#">Features</a></li>
+        <li class="list-none font-bold"><a href="#">Marketplace</a></li>
+        <li class="list-none font-bold"><a href="#">Company</a></li>
+     </div>
+     <button class="h-30 w-30 right-0 absolute text-white font-bold hidden lg:flex lg:absolute lg:right-0 lg:h-30 lg:w-30 lg:top-12">Login -></button>
+     <button class="text-white absolute right-10 lg:hidden add2" onclick="show()"><i class="fa-solid fa-bars"></i></button>
+     <button class="text-white absolute right-10 hidden add" onclick="hide()"><i class="fa-regular fa-circle-xmark"></i></button>
+    </div>
+    </div>
+    <div class="h-100 w-full text-white flex flex-col hidden nav">
+        <li class="font-semibold h-10 w-full flex items-center px-10 hover:bg-gray-500"><a href="#">Product</a></li>
+        <li class="font-semibold h-10 w-full flex items-center px-10 hover:bg-gray-500""><a href="#">Features</a></li>
+        <li class="font-semibold h-10 w-full flex items-center px-10 hover:bg-gray-500""><a href="#">Marketplace</a></li>
+        <li class="font-semibold h-10 w-full flex items-center px-10 hover:bg-gray-500""><a href="#">Company</a></li>
+    </div>
+    <div class="w-full h-50 bg-transparent flex items-center justify-center relative first">
+    <button class="border-2 border-gray-500 rounded-lg text-gray-500 px-3 absolute bottom-3">Anouncing our next round of funding.<span class="text-purple-500">Read more -></span></button>
+    </div>
+    <div class="w-full h-50  flex items-center justify-center second">
+    <div class="w-200 h-50 flex items-center justify-center">
+     <p class="text-5xl font-semibold text-white sm:text-7xl text-center">Data to enrich your online business</p>
+    </div>
+    </div>
+     <div class="w-full h-30  flex items-center justify-center third">
+    <div class="w-180 h-50 flex justify-center">
+         <p class="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8 text-center">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.</p>
+    </div>
+    </div>
+     <div class="mt-10 flex items-center justify-center gap-x-6 forth" >
+          <a href="https://tailwindcss.com/" class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Get started</a>
+          <a href="#" class="text-sm/6 font-semibold text-white">Learn more <span aria-hidden="true">→</span></a>
+        </div>
+    </div>
+    <script>
+        let nav=document.querySelector(".nav");
+        let first=document.querySelector(".first");
+        let second=document.querySelector(".second");
+        let third=document.querySelector(".third");
+        let forth=document.querySelector(".forth");
+        let add=document.querySelector(".add");
+        let add2=document.querySelector(".add2");
+        function show(){
+             nav.style.display="flex";
+            first.style.display="none";
+             second.style.display ="none";
+               third.style.display="none";
+                 forth.style.display="none";
+            add.style.display="flex";
+            add2.style.display="none";
+        }
+        function hide(){
+          nav.style.display="none";
+           first.style.display="flex";
+            second.style.display="flex";
+            third.style.display="flex";
+        forth.style.display="flex";
+            add.style.display="none";
+            add2.style.display="flex";
+        }
+    </script>
+</body>
+</html>
