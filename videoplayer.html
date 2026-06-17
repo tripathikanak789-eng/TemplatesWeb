@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>videoPlayer</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        .player{
+           max-width:1280px;
+           width:100%;
+           height:100vh;
+           margin:auto;
+           background:linear-gradient(45deg,indigo,pink);
+        }
+        .viewer{
+            height:400px;
+            width:50%;
+            margin-bottom: 0;
+             margin-left:25.5%;
+        }
+        .controls{
+            height:30px;
+            width:50%;
+            background-color:transparent;
+            margin-top:-70px;
+             margin-left:25.5%;
+        }
+        .progress{
+            height:10px;
+            width: 100%;
+            background-color: white;
+            position: relative;
+        }
+        .progress-filled{
+            position: absolute;
+           background-color: yellow;
+           height:10px;
+           width:50%;
+           flex:0;
+        }
+        .toggle{
+            border:none;
+            font-size: 1rem;
+            background-color: transparent;
+            color:white;
+            margin-left:10px;
+        }
+        .player_slider{
+            width:250px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="player">
+        <video class="viewer" src="/video/video1.mp4"></video>
+        <div class="controls">
+            <div class="progress">
+              <div class="progress-filled"></div>
+            </div>
+            <button class="toggle" title="toggle">▶</button>
+            <input class="player_slider" type="range" name="volume"
+            min="0" max="1" step="0.05" value=1/>
+             <input class="player_slider" type="range" name="playBackRate"
+            min="0.5" max="1" step="0.1" value=1/>
+            <button data-skip="-10" class="player_button">>> 10s</button>
+             <button data-skip="25" class="player_button">25s >></button>
+
+        </div>
+    </div>
+    <script>
+        let player=document.querySelector(".player");
+        let video=player.querySelector(".viewer");
+        let progress=player.querySelector(".progress");
+        let bar=player.querySelector(".progress-filled");
+        let toggle=player.querySelector(".toggle");
+        let skipbuttons=player.querySelectorAll("[data-skip]");
+        let ranges=player.querySelectorAll(".player_slider");
+        function togglePlay(){
+            if(video.paused){
+                video.play();
+            }else{
+                video.pause();
+            }
+        }
+        function updateButton(){
+            console.log(this.paused);
+            let icon=this.paused? "▶" : "⏸️" ;
+            toggle.textContent=icon;
+        }
+        function skip(){
+            video.currentTime=parseFloat(this.dataset.skip);
+        }
+        function handleevent(){
+            video[this.name]=this.value;
+        }
+        function handleprogress(){
+            const percent=(video.currentTime/video.duration)*100;
+            bar.style.width=`${percent}%`;
+        }
+        function change(e){
+            const time=(e.offsetX/progress.offsetWidth)*video.duration;
+            video.currentTime=time;
+            
+        }
+        let mousedown=false;
+        video.addEventListener("play",updateButton);
+        video.addEventListener("pause",updateButton)
+        video.addEventListener("click",togglePlay);
+         video.addEventListener("timeupdate",handleprogress);
+        toggle.addEventListener("click",togglePlay);
+        skipbuttons.forEach(btn=>btn.addEventListener('click',skip));
+        ranges.forEach(range=>range.addEventListener('change',handleevent));
+        progress.addEventListener('click',change);
+        progress.addEventListener("mousedown",()=>mousedown=true);
+        progress.addEventListener("mouseup",()=>mousedown=false);
+        progress.addEventListener("mousemove",(e)=>{
+            if(mousedown){
+                change(e)
+            }
+        })
+    </script>
+</body>
+</html>
